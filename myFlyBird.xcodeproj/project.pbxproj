@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		569226641C586F25004ED3B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569226631C586F25004ED3B3 /* AppDelegate.swift */; };
+		569226681C586F25004ED3B3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569226671C586F25004ED3B3 /* GameScene.swift */; };
+		5692266A1C586F25004ED3B3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569226691C586F25004ED3B3 /* GameViewController.swift */; };
+		5692266D1C586F25004ED3B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5692266B1C586F25004ED3B3 /* Main.storyboard */; };
+		5692266F1C586F25004ED3B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5692266E1C586F25004ED3B3 /* Assets.xcassets */; };
+		569226721C586F25004ED3B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569226701C586F25004ED3B3 /* LaunchScreen.storyboard */; };
+		569226AC1C587D67004ED3B3 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569226AB1C587D67004ED3B3 /* Define.swift */; };
+		56B507731C58A19400F1D4AA /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507641C58A19400F1D4AA /* back@2x.png */; };
+		56B507741C58A19400F1D4AA /* bird_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507651C58A19400F1D4AA /* bird_1@2x.png */; };
+		56B507751C58A19400F1D4AA /* bird_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507661C58A19400F1D4AA /* bird_2@2x.png */; };
+		56B507761C58A19400F1D4AA /* bird_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507671C58A19400F1D4AA /* bird_3@2x.png */; };
+		56B507771C58A19400F1D4AA /* floor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507681C58A19400F1D4AA /* floor@2x.png */; };
+		56B507781C58A19400F1D4AA /* game_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507691C58A19400F1D4AA /* game_over@2x.png */; };
+		56B507791C58A19400F1D4AA /* get_ready@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076A1C58A19400F1D4AA /* get_ready@2x.png */; };
+		56B5077A1C58A19400F1D4AA /* medal_bronze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */; };
+		56B5077B1C58A19400F1D4AA /* medal_gold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */; };
+		56B5077C1C58A19400F1D4AA /* medal_plate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */; };
+		56B5077D1C58A19400F1D4AA /* medal_platinum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */; };
+		56B5077E1C58A19400F1D4AA /* medal_silver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */; };
+		56B5077F1C58A19400F1D4AA /* pipe_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */; };
+		56B507801C58A19400F1D4AA /* pipe_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507711C58A19400F1D4AA /* pipe_top@2x.png */; };
+		56B507811C58A19400F1D4AA /* taptap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507721C58A19400F1D4AA /* taptap@2x.png */; };
+		56F650DD1C58F3EA001B59A2 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */; };
+		56F650E11C592504001B59A2 /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56F650E01C592504001B59A2 /* back2@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		569226601C586F25004ED3B3 /* myFlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		569226631C586F25004ED3B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		569226671C586F25004ED3B3 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		569226691C586F25004ED3B3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		5692266C1C586F25004ED3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5692266E1C586F25004ED3B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		569226711C586F25004ED3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		569226731C586F25004ED3B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		569226AB1C587D67004ED3B3 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		56B507641C58A19400F1D4AA /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/back@2x.png"; sourceTree = "<group>"; };
+		56B507651C58A19400F1D4AA /* bird_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_1@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_1@2x.png"; sourceTree = "<group>"; };
+		56B507661C58A19400F1D4AA /* bird_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_2@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_2@2x.png"; sourceTree = "<group>"; };
+		56B507671C58A19400F1D4AA /* bird_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_3@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_3@2x.png"; sourceTree = "<group>"; };
+		56B507681C58A19400F1D4AA /* floor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "floor@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/floor@2x.png"; sourceTree = "<group>"; };
+		56B507691C58A19400F1D4AA /* game_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "game_over@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/game_over@2x.png"; sourceTree = "<group>"; };
+		56B5076A1C58A19400F1D4AA /* get_ready@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "get_ready@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/get_ready@2x.png"; sourceTree = "<group>"; };
+		56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_bronze@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_bronze@2x.png"; sourceTree = "<group>"; };
+		56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_gold@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_gold@2x.png"; sourceTree = "<group>"; };
+		56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_plate@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_plate@2x.png"; sourceTree = "<group>"; };
+		56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_platinum@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_platinum@2x.png"; sourceTree = "<group>"; };
+		56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_silver@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_silver@2x.png"; sourceTree = "<group>"; };
+		56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bottom@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/pipe_bottom@2x.png"; sourceTree = "<group>"; };
+		56B507711C58A19400F1D4AA /* pipe_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_top@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/pipe_top@2x.png"; sourceTree = "<group>"; };
+		56B507721C58A19400F1D4AA /* taptap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "taptap@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/taptap@2x.png"; sourceTree = "<group>"; };
+		56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		56F650E01C592504001B59A2 /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5692265D1C586F25004ED3B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		569226571C586F25004ED3B3 = {
+			isa = PBXGroup;
+			children = (
+				569226621C586F25004ED3B3 /* myFlyBird */,
+				569226611C586F25004ED3B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		569226611C586F25004ED3B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				569226601C586F25004ED3B3 /* myFlyBird.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		569226621C586F25004ED3B3 /* myFlyBird */ = {
+			isa = PBXGroup;
+			children = (
+				56B507821C58A1A300F1D4AA /* image.atlas */,
+				569226631C586F25004ED3B3 /* AppDelegate.swift */,
+				569226671C586F25004ED3B3 /* GameScene.swift */,
+				569226691C586F25004ED3B3 /* GameViewController.swift */,
+				5692266B1C586F25004ED3B3 /* Main.storyboard */,
+				5692266E1C586F25004ED3B3 /* Assets.xcassets */,
+				569226701C586F25004ED3B3 /* LaunchScreen.storyboard */,
+				569226731C586F25004ED3B3 /* Info.plist */,
+				569226AB1C587D67004ED3B3 /* Define.swift */,
+				56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */,
+			);
+			path = myFlyBird;
+			sourceTree = "<group>";
+		};
+		56B507821C58A1A300F1D4AA /* image.atlas */ = {
+			isa = PBXGroup;
+			children = (
+				56F650E01C592504001B59A2 /* back2@2x.png */,
+				56B507641C58A19400F1D4AA /* back@2x.png */,
+				56B507651C58A19400F1D4AA /* bird_1@2x.png */,
+				56B507661C58A19400F1D4AA /* bird_2@2x.png */,
+				56B507671C58A19400F1D4AA /* bird_3@2x.png */,
+				56B507681C58A19400F1D4AA /* floor@2x.png */,
+				56B507691C58A19400F1D4AA /* game_over@2x.png */,
+				56B5076A1C58A19400F1D4AA /* get_ready@2x.png */,
+				56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */,
+				56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */,
+				56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */,
+				56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */,
+				56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */,
+				56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */,
+				56B507711C58A19400F1D4AA /* pipe_top@2x.png */,
+				56B507721C58A19400F1D4AA /* taptap@2x.png */,
+			);
+			name = image.atlas;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5692265F1C586F25004ED3B3 /* myFlyBird */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 569226761C586F25004ED3B3 /* Build configuration list for PBXNativeTarget "myFlyBird" */;
+			buildPhases = (
+				5692265C1C586F25004ED3B3 /* Sources */,
+				5692265D1C586F25004ED3B3 /* Frameworks */,
+				5692265E1C586F25004ED3B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myFlyBird;
+			productName = myFlyBird;
+			productReference = 569226601C586F25004ED3B3 /* myFlyBird.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		569226581C586F25004ED3B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Linsw;
+				TargetAttributes = {
+					5692265F1C586F25004ED3B3 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4F6NMKB449;
+					};
+				};
+			};
+			buildConfigurationList = 5692265B1C586F25004ED3B3 /* Build configuration list for PBXProject "myFlyBird" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 569226571C586F25004ED3B3;
+			productRefGroup = 569226611C586F25004ED3B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5692265F1C586F25004ED3B3 /* myFlyBird */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5692265E1C586F25004ED3B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56B507801C58A19400F1D4AA /* pipe_top@2x.png in Resources */,
+				56B5077C1C58A19400F1D4AA /* medal_plate@2x.png in Resources */,
+				569226721C586F25004ED3B3 /* LaunchScreen.storyboard in Resources */,
+				56B5077A1C58A19400F1D4AA /* medal_bronze@2x.png in Resources */,
+				56B507731C58A19400F1D4AA /* back@2x.png in Resources */,
+				56B507741C58A19400F1D4AA /* bird_1@2x.png in Resources */,
+				5692266F1C586F25004ED3B3 /* Assets.xcassets in Resources */,
+				56B5077F1C58A19400F1D4AA /* pipe_bottom@2x.png in Resources */,
+				56B5077E1C58A19400F1D4AA /* medal_silver@2x.png in Resources */,
+				56B507811C58A19400F1D4AA /* taptap@2x.png in Resources */,
+				56B507761C58A19400F1D4AA /* bird_3@2x.png in Resources */,
+				56B5077B1C58A19400F1D4AA /* medal_gold@2x.png in Resources */,
+				56B507781C58A19400F1D4AA /* game_over@2x.png in Resources */,
+				56B507771C58A19400F1D4AA /* floor@2x.png in Resources */,
+				5692266D1C586F25004ED3B3 /* Main.storyboard in Resources */,
+				56B507791C58A19400F1D4AA /* get_ready@2x.png in Resources */,
+				56F650E11C592504001B59A2 /* back2@2x.png in Resources */,
+				56B5077D1C58A19400F1D4AA /* medal_platinum@2x.png in Resources */,
+				56B507751C58A19400F1D4AA /* bird_2@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5692265C1C586F25004ED3B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56F650DD1C58F3EA001B59A2 /* GameOverScene.swift in Sources */,
+				569226681C586F25004ED3B3 /* GameScene.swift in Sources */,
+				5692266A1C586F25004ED3B3 /* GameViewController.swift in Sources */,
+				569226AC1C587D67004ED3B3 /* Define.swift in Sources */,
+				569226641C586F25004ED3B3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5692266B1C586F25004ED3B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5692266C1C586F25004ED3B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		569226701C586F25004ED3B3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				569226711C586F25004ED3B3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		569226741C586F25004ED3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		569226751C586F25004ED3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		569226771C586F25004ED3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = myFlyBird/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lsw.self.myFlyBird;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		569226781C586F25004ED3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = myFlyBird/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lsw.self.myFlyBird;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5692265B1C586F25004ED3B3 /* Build configuration list for PBXProject "myFlyBird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				569226741C586F25004ED3B3 /* Debug */,
+				569226751C586F25004ED3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		569226761C586F25004ED3B3 /* Build configuration list for PBXNativeTarget "myFlyBird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				569226771C586F25004ED3B3 /* Debug */,
+				569226781C586F25004ED3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 569226581C586F25004ED3B3 /* Project object */;
+}
