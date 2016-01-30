@@ -31,6 +31,7 @@ enum SceneZposition: CGFloat {
     case Floor
     case Bird = 40
     case TranslucentBackground
-    case GameReady
+    
     case GameOver
+    case GameReady
 }

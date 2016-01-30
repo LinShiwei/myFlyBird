@@ -14,23 +14,6 @@
 		5692266F1C586F25004ED3B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5692266E1C586F25004ED3B3 /* Assets.xcassets */; };
 		569226721C586F25004ED3B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569226701C586F25004ED3B3 /* LaunchScreen.storyboard */; };
 		569226AC1C587D67004ED3B3 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569226AB1C587D67004ED3B3 /* Define.swift */; };
-		56B507731C58A19400F1D4AA /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507641C58A19400F1D4AA /* back@2x.png */; };
-		56B507741C58A19400F1D4AA /* bird_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507651C58A19400F1D4AA /* bird_1@2x.png */; };
-		56B507751C58A19400F1D4AA /* bird_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507661C58A19400F1D4AA /* bird_2@2x.png */; };
-		56B507761C58A19400F1D4AA /* bird_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507671C58A19400F1D4AA /* bird_3@2x.png */; };
-		56B507771C58A19400F1D4AA /* floor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507681C58A19400F1D4AA /* floor@2x.png */; };
-		56B507781C58A19400F1D4AA /* game_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507691C58A19400F1D4AA /* game_over@2x.png */; };
-		56B507791C58A19400F1D4AA /* get_ready@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076A1C58A19400F1D4AA /* get_ready@2x.png */; };
-		56B5077A1C58A19400F1D4AA /* medal_bronze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */; };
-		56B5077B1C58A19400F1D4AA /* medal_gold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */; };
-		56B5077C1C58A19400F1D4AA /* medal_plate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */; };
-		56B5077D1C58A19400F1D4AA /* medal_platinum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */; };
-		56B5077E1C58A19400F1D4AA /* medal_silver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */; };
-		56B5077F1C58A19400F1D4AA /* pipe_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */; };
-		56B507801C58A19400F1D4AA /* pipe_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507711C58A19400F1D4AA /* pipe_top@2x.png */; };
-		56B507811C58A19400F1D4AA /* taptap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B507721C58A19400F1D4AA /* taptap@2x.png */; };
-		56F650DD1C58F3EA001B59A2 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */; };
-		56F650E11C592504001B59A2 /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56F650E01C592504001B59A2 /* back2@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,23 +26,6 @@
 		569226711C586F25004ED3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		569226731C586F25004ED3B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		569226AB1C587D67004ED3B3 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
-		56B507641C58A19400F1D4AA /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/back@2x.png"; sourceTree = "<group>"; };
-		56B507651C58A19400F1D4AA /* bird_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_1@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_1@2x.png"; sourceTree = "<group>"; };
-		56B507661C58A19400F1D4AA /* bird_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_2@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_2@2x.png"; sourceTree = "<group>"; };
-		56B507671C58A19400F1D4AA /* bird_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bird_3@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/bird_3@2x.png"; sourceTree = "<group>"; };
-		56B507681C58A19400F1D4AA /* floor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "floor@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/floor@2x.png"; sourceTree = "<group>"; };
-		56B507691C58A19400F1D4AA /* game_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "game_over@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/game_over@2x.png"; sourceTree = "<group>"; };
-		56B5076A1C58A19400F1D4AA /* get_ready@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "get_ready@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/get_ready@2x.png"; sourceTree = "<group>"; };
-		56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_bronze@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_bronze@2x.png"; sourceTree = "<group>"; };
-		56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_gold@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_gold@2x.png"; sourceTree = "<group>"; };
-		56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_plate@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_plate@2x.png"; sourceTree = "<group>"; };
-		56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_platinum@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_platinum@2x.png"; sourceTree = "<group>"; };
-		56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_silver@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/medal_silver@2x.png"; sourceTree = "<group>"; };
-		56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bottom@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/pipe_bottom@2x.png"; sourceTree = "<group>"; };
-		56B507711C58A19400F1D4AA /* pipe_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_top@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/pipe_top@2x.png"; sourceTree = "<group>"; };
-		56B507721C58A19400F1D4AA /* taptap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "taptap@2x.png"; path = "../../../Downloads/SprityBird-master/spritybird/Resources/taptap@2x.png"; sourceTree = "<group>"; };
-		56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
-		56F650E01C592504001B59A2 /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +58,6 @@
 		569226621C586F25004ED3B3 /* myFlyBird */ = {
 			isa = PBXGroup;
 			children = (
-				56B507821C58A1A300F1D4AA /* image.atlas */,
 				569226631C586F25004ED3B3 /* AppDelegate.swift */,
 				569226671C586F25004ED3B3 /* GameScene.swift */,
 				569226691C586F25004ED3B3 /* GameViewController.swift */,
@@ -101,32 +66,8 @@
 				569226701C586F25004ED3B3 /* LaunchScreen.storyboard */,
 				569226731C586F25004ED3B3 /* Info.plist */,
 				569226AB1C587D67004ED3B3 /* Define.swift */,
-				56F650DC1C58F3EA001B59A2 /* GameOverScene.swift */,
 			);
 			path = myFlyBird;
-			sourceTree = "<group>";
-		};
-		56B507821C58A1A300F1D4AA /* image.atlas */ = {
-			isa = PBXGroup;
-			children = (
-				56F650E01C592504001B59A2 /* back2@2x.png */,
-				56B507641C58A19400F1D4AA /* back@2x.png */,
-				56B507651C58A19400F1D4AA /* bird_1@2x.png */,
-				56B507661C58A19400F1D4AA /* bird_2@2x.png */,
-				56B507671C58A19400F1D4AA /* bird_3@2x.png */,
-				56B507681C58A19400F1D4AA /* floor@2x.png */,
-				56B507691C58A19400F1D4AA /* game_over@2x.png */,
-				56B5076A1C58A19400F1D4AA /* get_ready@2x.png */,
-				56B5076B1C58A19400F1D4AA /* medal_bronze@2x.png */,
-				56B5076C1C58A19400F1D4AA /* medal_gold@2x.png */,
-				56B5076D1C58A19400F1D4AA /* medal_plate@2x.png */,
-				56B5076E1C58A19400F1D4AA /* medal_platinum@2x.png */,
-				56B5076F1C58A19400F1D4AA /* medal_silver@2x.png */,
-				56B507701C58A19400F1D4AA /* pipe_bottom@2x.png */,
-				56B507711C58A19400F1D4AA /* pipe_top@2x.png */,
-				56B507721C58A19400F1D4AA /* taptap@2x.png */,
-			);
-			name = image.atlas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,25 +129,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B507801C58A19400F1D4AA /* pipe_top@2x.png in Resources */,
-				56B5077C1C58A19400F1D4AA /* medal_plate@2x.png in Resources */,
 				569226721C586F25004ED3B3 /* LaunchScreen.storyboard in Resources */,
-				56B5077A1C58A19400F1D4AA /* medal_bronze@2x.png in Resources */,
-				56B507731C58A19400F1D4AA /* back@2x.png in Resources */,
-				56B507741C58A19400F1D4AA /* bird_1@2x.png in Resources */,
 				5692266F1C586F25004ED3B3 /* Assets.xcassets in Resources */,
-				56B5077F1C58A19400F1D4AA /* pipe_bottom@2x.png in Resources */,
-				56B5077E1C58A19400F1D4AA /* medal_silver@2x.png in Resources */,
-				56B507811C58A19400F1D4AA /* taptap@2x.png in Resources */,
-				56B507761C58A19400F1D4AA /* bird_3@2x.png in Resources */,
-				56B5077B1C58A19400F1D4AA /* medal_gold@2x.png in Resources */,
-				56B507781C58A19400F1D4AA /* game_over@2x.png in Resources */,
-				56B507771C58A19400F1D4AA /* floor@2x.png in Resources */,
 				5692266D1C586F25004ED3B3 /* Main.storyboard in Resources */,
-				56B507791C58A19400F1D4AA /* get_ready@2x.png in Resources */,
-				56F650E11C592504001B59A2 /* back2@2x.png in Resources */,
-				56B5077D1C58A19400F1D4AA /* medal_platinum@2x.png in Resources */,
-				56B507751C58A19400F1D4AA /* bird_2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +142,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56F650DD1C58F3EA001B59A2 /* GameOverScene.swift in Sources */,
 				569226681C586F25004ED3B3 /* GameScene.swift in Sources */,
 				5692266A1C586F25004ED3B3 /* GameViewController.swift in Sources */,
 				569226AC1C587D67004ED3B3 /* Define.swift in Sources */,

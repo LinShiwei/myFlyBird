@@ -16,14 +16,13 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
-
+    
+    var gameOver = false
+    
     let scrollVelocity:CGFloat = 120//120px per second
     //MARK: View
     override func didMoveToView(view: SKView) {
-        backgroundColor = SKColor.whiteColor()
-        loadBackground()
-        loadGameReadyNode()
-        loadGameOverNode()
+        backgroundColor = SKColor.blackColor()
         physicsWorld.gravity = CGVectorMake(0, -2)
         physicsWorld.contactDelegate = self
         start()
@@ -34,67 +33,72 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
-            if let name = node.name{
-                switch name {
-                case SceneChildName.GameReady.rawValue :
-                    self.view?.paused = false
-//                    let gameReadyNode = node as! SKSpriteNode
-                    node.hidden = true
-                    node.parent?.hidden = true
-                case SceneChildName.GameOver.rawValue,SceneChildName.GameOverNode.rawValue:
-                    self.view?.paused = false
-                    print("overover")
-                    start()
-                default :
+            if node.name == SceneChildName.GameReady.rawValue{
+                node.parent?.hidden = true
+                gameOver = false
+                let bird = childNodeWithName(SceneChildName.Bird.rawValue)
+                bird?.physicsBody?.dynamic = true
+                let pipe = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
+                pipe.runAction(SKAction.repeatActionForever(SKAction.sequence([
+                    SKAction.runBlock{
+                    self.addPipe()
+                    pipe.text = String(Int(pipe.text!)!+1)
+                    },
+                    SKAction.waitForDuration(NSTimeInterval(2))
+                    ])
+                    ), withKey: "AddPipe")
+            }else if gameOver {
+                start()
+                
+                }else{
+                    
                     let bird = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode
                     bird.physicsBody?.velocity = CGVectorMake(0, 0)
                     bird.physicsBody?.applyImpulse(CGVectorMake(0, 20))
-                }
-            
-            }else{
-                let bird = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode
-                bird.physicsBody?.velocity = CGVectorMake(0, 0)
-                bird.physicsBody?.applyImpulse(CGVectorMake(0, 20))
-
             }
         }
-       
     }
     //MARK: Contact
     func didBeginContact(contact: SKPhysicsContact) {
-        var firstBody: SKPhysicsBody
-        var secondBody: SKPhysicsBody
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        } else {
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
+        if gameOver {
+            return
+        }else{
+            var firstBody: SKPhysicsBody
+            var secondBody: SKPhysicsBody
+            if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+                firstBody = contact.bodyA
+                secondBody = contact.bodyB
+            } else {
+                firstBody = contact.bodyB
+                secondBody = contact.bodyA
+            }
+            
+            // 2
+            if ((firstBody.categoryBitMask & PhysicsCategory.Bird != 0) &&
+                (secondBody.categoryBitMask & PhysicsCategory.Pipe != 0)) {
+                    
+                    birdDidCollideWithPipe(firstBody.node as! SKSpriteNode, pipe: secondBody.node as! SKSpriteNode)
+            }
+            if ((firstBody.categoryBitMask & PhysicsCategory.Bird != 0) &&
+                (secondBody.categoryBitMask & PhysicsCategory.Floor != 0)) {
+                    
+                    birdDidCollideWithPipe(firstBody.node as! SKSpriteNode, pipe: secondBody.node as! SKSpriteNode)
+            }
+        
         }
-        
-        // 2
-        if ((firstBody.categoryBitMask & PhysicsCategory.Bird != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.Pipe != 0)) {
-                
-                birdDidCollideWithPipe(firstBody.node as! SKSpriteNode, pipe: secondBody.node as! SKSpriteNode)
-        }
-        if ((firstBody.categoryBitMask & PhysicsCategory.Bird != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.Floor != 0)) {
-                
-                birdDidCollideWithPipe(firstBody.node as! SKSpriteNode, pipe: secondBody.node as! SKSpriteNode)
-        }
-        
-        
-        
+       
     }
     func birdDidCollideWithPipe(bird:SKSpriteNode,pipe:SKSpriteNode) {
         print("Hit  \(pipe.name)")
+        gameOver = true
 //        self.view?.paused = true
-//        let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
-//        node!.hidden = false
-                let reveal = SKTransition.fadeWithDuration(0.5)
-                let gameOverScene = GameOverScene(size: size, won: false)
-                self.view?.presentScene(gameOverScene, transition: reveal)
+        let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
+        node!.hidden = false
+        removeAction()
+        
+//                let reveal = SKTransition.fadeWithDuration(0.5)
+//                let gameOverScene = GameOverScene(size: size, won: false)
+//                self.view?.presentScene(gameOverScene, transition: reveal)
         
     }
    //MARK: Load
@@ -102,11 +106,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         if let node = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode?{
             node.position = CGPoint(x: size.width/2,y: size.height/2)
         }else {
-            let bird = SKSpriteNode(imageNamed: "bird_1")
+            let bird = SKSpriteNode(imageNamed: "Bird")
             bird.position = CGPoint(x: size.width/2,y: size.height/2)
             bird.name = SceneChildName.Bird.rawValue
             bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width/2) // 1
-            bird.physicsBody?.dynamic = true // 2
+            bird.physicsBody?.dynamic = false // 2
             bird.physicsBody?.categoryBitMask = PhysicsCategory.Bird // 3
             bird.physicsBody?.contactTestBitMask = PhysicsCategory.Pipe & PhysicsCategory.Floor  // 4
             bird.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
@@ -123,7 +127,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let halfGap = getGap()/2
         let yOff = random(min:-100,max:100)
         let gapCenter = size.height/2 + yOff
-        let topPipe = SKSpriteNode(imageNamed: "pipe_top")
+        let topPipe = SKSpriteNode(imageNamed: "TopPipe")
         topPipe.name = "topP"
         topPipe.anchorPoint = CGPoint(x: 0, y: 0)
         topPipe.position = CGPoint(x: size.width , y: gapCenter + halfGap)
@@ -139,7 +143,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
 
         addChild(topPipe)
 
-        let bottomPipe = SKSpriteNode(imageNamed: "pipe_bottom")
+        let bottomPipe = SKSpriteNode(imageNamed: "BottomPipe")
         bottomPipe.name = "bottomP"
         bottomPipe.anchorPoint = CGPoint(x: 0, y: 1)
         bottomPipe.position = CGPoint(x: size.width , y: gapCenter - halfGap)
@@ -167,7 +171,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func loadBackground() {
         guard let _ = childNodeWithName("background") as! SKSpriteNode? else {
-            let texture = SKTexture(image: UIImage(named: "back2")!)
+            let texture = SKTexture(image: UIImage(named: "Background2")!)
             let size2 = CGSize(width: size.width*2, height: size.height)
             let node = SKSpriteNode(texture: texture, color: UIColor.whiteColor(), size: size2)
             node.name = SceneChildName.Background.rawValue
@@ -185,7 +189,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             return
         }
     }
-        func loadPipe(){
+    func loadPipe(){
         if let node = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode? {
             node.text = "0"
         }else{
@@ -199,22 +203,26 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             label.horizontalAlignmentMode = .Center
             label.name = SceneChildName.PipeLabel.rawValue
             addChild(label)
-            let actionLabelNumberAdd = SKAction.runBlock(){
-                label.text = String(Int(label.text!)!+1)
-            }
-            self.view!.paused = true
-            label.runAction(SKAction.repeatActionForever(
-                SKAction.sequence([
-                    SKAction.runBlock(addPipe),
-                    actionLabelNumberAdd,
-                    SKAction.waitForDuration(NSTimeInterval(2))
-                    ])
-                ))
+//            let actionLabelNumberAdd = SKAction.runBlock(){
+//                label.text = String(Int(label.text!)!+1)
+//            }
+//            label.runAction(SKAction.repeatActionForever(
+//                SKAction.runBlock{
+//                    if !self.gameOver{
+//                        self.addPipe()
+//                        SKAction.sequence([
+//                        actionLabelNumberAdd,
+//                        SKAction.waitForDuration(NSTimeInterval(2))
+//                    ])
+//                    }
+//                }
+//                
+//                ))
         }
     }
     func loadFloor()->SKSpriteNode{
 
-        let texture = SKTexture(image: UIImage(named: "floor")!)
+        let texture = SKTexture(image: UIImage(named: "Floor")!)
         let floorSize = CGSize(width: 2*size.width, height: size.height*0.1)
         let node = SKSpriteNode(texture: texture, color: UIColor.whiteColor(), size: floorSize)
         node.name = SceneChildName.Floor.rawValue
@@ -233,7 +241,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func loadGameReadyNode(){
         guard let _ = childNodeWithName(SceneChildName.GameReadyNode.rawValue) as! SKSpriteNode? else {
-            let texture = SKTexture(image: UIImage(named: "taptap")!)
+            let texture = SKTexture(image: UIImage(named: "Taptap")!)
             let node = SKSpriteNode(texture: texture)
             node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             node.position = CGPointMake(size.width/2, size.height/2)
@@ -253,14 +261,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     func loadGameOverNode(){
         guard let _ = childNodeWithName(SceneChildName.GameOverNode.rawValue) as! SKSpriteNode? else {
-            let texture = SKTexture(image: UIImage(named: "medal_plate")!)
+            let texture = SKTexture(image: UIImage(named: "MedalPlate")!)
             let node = SKSpriteNode(texture: texture)
             node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             node.position = CGPointMake(size.width/2, size.height/2)
             node.zPosition = SceneZposition.GameOver.rawValue
             node.name = SceneChildName.GameOver.rawValue
             
-            let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.3), size: size)
+            let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.9), size: size)
             backgroundNode.anchorPoint = CGPoint(x: 0, y: 0)
             backgroundNode.name = SceneChildName.GameOverNode.rawValue
             backgroundNode.zPosition = SceneZposition.TranslucentBackground.rawValue
@@ -272,12 +280,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     //MARK: 自定义函数
     func start(){
+        removeAllChildren()
+        loadBackground()
+        loadGameReadyNode()
+        loadGameOverNode()
         loadBird()
         loadPipe()
         let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
         node!.hidden = true
-      
+//        gameOver = false
     }
+    
     func getGap()->CGFloat{
         let bird = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode
         return bird.size.height * 12
@@ -288,41 +301,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func random(min min: CGFloat, max: CGFloat) -> CGFloat {
         return random() * (max - min) + min
     }
-    /*
-    func loadNumber() {
-    let labelA = SKLabelNode(fontNamed: "Arial")
-    //        labelA.name = SceneChildName.ScoreName.rawValue
-    labelA.text = "1"
-    labelA.position = CGPointMake(size.width*3/2, size.height*0.4)
-    labelA.fontColor = SKColor.whiteColor()
-    labelA.fontSize = 400
-    labelA.zPosition = SceneZposition.Number.rawValue
-    labelA.horizontalAlignmentMode = .Center
-    
-    addChild(labelA)
-    
-    let labelB = SKLabelNode(fontNamed: "Arial")
-    labelB.text = "0"
-    labelB.position = CGPointMake(size.width/2, size.height*0.4)
-    labelB.fontColor = SKColor.whiteColor()
-    labelB.fontSize = 400
-    labelB.zPosition = SceneZposition.Number.rawValue
-    labelB.horizontalAlignmentMode = .Center
-    
-    addChild(labelB)
-    let duration = size.width / scrollVelocity
-    let actionMove = SKAction.moveByX(-size.width, y: 0, duration: NSTimeInterval(duration))
-    let actionLabelAAdd = SKAction.runBlock(){
-    labelA.text = String(Int(labelA.text!)!+2)
+    func removeAction(){
+        let node = childNodeWithName(SceneChildName.Bird.rawValue)
+        node?.physicsBody?.dynamic = false
+        for child in children {
+            child.removeAllActions()
+        }
     }
-    let actionLabelBAdd = SKAction.runBlock(){
-    labelB.text = String(Int(labelB.text!)!+2)
-    }
-    let actionReset = SKAction.moveToX(size.width*3/2, duration: 0)
-    labelB.runAction(SKAction.repeatActionForever(SKAction.sequence([actionMove,actionLabelBAdd,actionReset,actionMove])))
-    labelA.runAction(SKAction.repeatActionForever(SKAction.sequence([actionMove,actionMove,actionLabelAAdd,actionReset])))
-    
-    }
-    */
-
 }
