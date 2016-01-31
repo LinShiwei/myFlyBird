@@ -274,6 +274,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             let medal = SKSpriteNode(texture: SKTexture(imageNamed: "MedalGold"))
             medal.position = CGPointMake(-plate.size.width*0.2831, -plate.size.height*0.056)
             medal.zPosition = plate.zPosition + 1
+            medal.name = SceneChildName.Medal.rawValue
             plate.addChild(medal)
             
             let scoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
@@ -296,7 +297,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             bestScoreLabel.name = SceneChildName.BestScoreLabel.rawValue
             plate.addChild(bestScoreLabel)
             
-            let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.9), size: size)
+            let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.3), size: size)
             backgroundNode.anchorPoint = CGPoint(x: 0, y: 0)
             backgroundNode.name = SceneChildName.GameOverNode.rawValue
             backgroundNode.zPosition = SceneZposition.TranslucentBackground.rawValue
@@ -304,6 +305,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             addChild(backgroundNode)
             return
         }
+        
+    }
+    func loadPauseButton(){
         
     }
     //MARK: 自定义函数
@@ -347,18 +351,32 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let labelNode = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
         let score = Int(labelNode.text!)
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let bestScore = userDefaults.integerForKey("BestScore")
+        var bestScore = userDefaults.integerForKey("BestScore")
         if score > bestScore {
             userDefaults.setValue(score, forKey: "BestScore")
+            bestScore = score!
         }
-    
+        
         let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
         let plate = node!.childNodeWithName(SceneChildName.GameOver.rawValue)
         let scoreLabel = plate?.childNodeWithName(SceneChildName.ScoreLabel.rawValue) as! SKLabelNode
         scoreLabel.text = labelNode.text
         let bestScoreLabel = plate?.childNodeWithName(SceneChildName.BestScoreLabel.rawValue) as! SKLabelNode
         bestScoreLabel.text = String(bestScore)
-        
+        let medal = plate?.childNodeWithName(SceneChildName.Medal.rawValue) as! SKSpriteNode
+        if bestScore < 50 {
+            medal.texture = SKTexture(imageNamed: "MedalBronze")
+        }else{
+            if bestScore < 100 {
+                medal.texture = SKTexture(imageNamed: "MedalSilver")
+            }else{
+                if bestScore < 500 {
+                    medal.texture = SKTexture(imageNamed: "MedalPlatinum")
+                }else{
+                    medal.texture = SKTexture(imageNamed: "MedalGold")
+                }
+            }
+        }
         node!.hidden = false
         
     }

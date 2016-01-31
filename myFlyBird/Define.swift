@@ -22,6 +22,7 @@ enum SceneChildName : String {
     case GameOverNode = "gameOverNode"
     case ScoreLabel = "scoreLabel"
     case BestScoreLabel = "bestScoreLabel"
+    case Medal = "medal"
 
 }
 enum SceneZposition: CGFloat {

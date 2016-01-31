@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myFlyBird/GameScene.swift"
-            timestampString = "475936787.271233"
+            timestampString = "475938855.153025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "loadGameOverNode()"
             landmarkType = "5">
          </BreakpointContent>

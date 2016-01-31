@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -16,11 +17,30 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVo-TK-CiX">
+                                <rect key="frame" x="20" y="20" width="45" height="45"/>
+                                <state key="normal" image="Pause"/>
+                                <connections>
+                                    <action selector="pause:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rrl-BI-tix"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SVo-TK-CiX" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="e4c-kE-bWB"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="SVo-TK-CiX" secondAttribute="leading" id="qxk-K7-RNu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="SVo-TK-CiX" id="ccD-9n-YSH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pause" width="45" height="45"/>
+    </resources>
 </document>
