@@ -18,14 +18,33 @@ struct PhysicsCategory {
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
     var gameOver = false
+//    var deltaPosY:CGFloat?
+//    var goingUp = false
     
     let scrollVelocity:CGFloat = 120//120px per second
     //MARK: View
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.blackColor()
-        physicsWorld.gravity = CGVectorMake(0, -2)
         physicsWorld.contactDelegate = self
         start()
+    }
+    override func update(currentTime: NSTimeInterval) {
+        if let bird = childNodeWithName(SceneChildName.Bird.rawValue){
+//            if(bird.physicsBody == nil){
+//                if(deltaPosY > 5.0){
+//                    goingUp = false;
+//                }
+//                if(deltaPosY < -5.0){
+//                    goingUp = true;
+//                }
+//                
+//                let displacement:CGFloat = goingUp ?1.0:-1.0
+//                bird.position = CGPointMake(bird.position.x, bird.position.y + displacement);
+//                deltaPosY = deltaPosY! + displacement;
+//            }
+//            
+            bird.zRotation = 3.14 * bird.physicsBody!.velocity.dy * 0.0006
+        }
     }
     //MARK: touch
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -54,7 +73,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                     
                     let bird = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode
                     bird.physicsBody?.velocity = CGVectorMake(0, 0)
-                    bird.physicsBody?.applyImpulse(CGVectorMake(0, 20))
+                    bird.physicsBody?.applyImpulse(CGVectorMake(0, 40))
             }
         }
     }
@@ -91,29 +110,31 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func birdDidCollideWithPipe(bird:SKSpriteNode,pipe:SKSpriteNode) {
         print("Hit  \(pipe.name)")
         gameOver = true
-//        self.view?.paused = true
-        let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
-        node!.hidden = false
+        refreshBestScoreAndPresentMedalPlate()
         removeAction()
-        
-//                let reveal = SKTransition.fadeWithDuration(0.5)
-//                let gameOverScene = GameOverScene(size: size, won: false)
-//                self.view?.presentScene(gameOverScene, transition: reveal)
-        
     }
    //MARK: Load
     func loadBird(){
         if let node = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode?{
             node.position = CGPoint(x: size.width/2,y: size.height/2)
         }else {
-            let bird = SKSpriteNode(imageNamed: "Bird")
+            let birdTexture1 = SKTexture(imageNamed: "Bird_1")
+            birdTexture1.filteringMode = SKTextureFilteringMode.Nearest
+            let birdTexture2 = SKTexture(imageNamed: "Bird_2")
+            birdTexture2.filteringMode = SKTextureFilteringMode.Nearest
+            let birdTexture3 = SKTexture(imageNamed: "Bird_3")
+            birdTexture3.filteringMode = SKTextureFilteringMode.Nearest
+            let texture = [birdTexture1,birdTexture2,birdTexture3]
+            let bird = SKSpriteNode(texture: birdTexture1)
+            let flap = SKAction.animateWithTextures(texture, timePerFrame: 0.2, resize: true, restore: true)
+            bird.runAction(SKAction.repeatActionForever(flap), withKey: "flapForever")
             bird.position = CGPoint(x: size.width/2,y: size.height/2)
             bird.name = SceneChildName.Bird.rawValue
             bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width/2) // 1
             bird.physicsBody?.dynamic = false // 2
             bird.physicsBody?.categoryBitMask = PhysicsCategory.Bird // 3
             bird.physicsBody?.contactTestBitMask = PhysicsCategory.Pipe & PhysicsCategory.Floor  // 4
-            bird.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+//            bird.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
             bird.physicsBody?.usesPreciseCollisionDetection = true
 
             bird.physicsBody?.mass = 0.1
@@ -134,7 +155,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let topCenter = CGPoint(x: topPipe.size.width/2, y: topPipe.size.height/2)
 
         topPipe.physicsBody = SKPhysicsBody(rectangleOfSize: topPipe.size,center: topCenter) // 1
-        topPipe.physicsBody?.dynamic = true // 2
         topPipe.physicsBody?.categoryBitMask = PhysicsCategory.Pipe // 3
         topPipe.physicsBody?.contactTestBitMask = PhysicsCategory.Bird // 4
         topPipe.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
@@ -149,7 +169,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         bottomPipe.position = CGPoint(x: size.width , y: gapCenter - halfGap)
         let bottomCenter = CGPoint(x: bottomPipe.size.width/2, y: -bottomPipe.size.height/2)
         bottomPipe.physicsBody = SKPhysicsBody(rectangleOfSize: bottomPipe.size,center: bottomCenter)
-        bottomPipe.physicsBody?.dynamic = true // 2
         bottomPipe.physicsBody?.categoryBitMask = PhysicsCategory.Pipe // 3
         bottomPipe.physicsBody?.contactTestBitMask = PhysicsCategory.Bird // 4
         bottomPipe.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
@@ -198,26 +217,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             label.alpha = 0.3
             label.position = CGPointMake(size.width/2, size.height*0.4)
             label.fontColor = SKColor.whiteColor()
-            label.fontSize = 500
+            label.fontSize = 450
             label.zPosition = SceneZposition.PipeLabel.rawValue
             label.horizontalAlignmentMode = .Center
             label.name = SceneChildName.PipeLabel.rawValue
             addChild(label)
-//            let actionLabelNumberAdd = SKAction.runBlock(){
-//                label.text = String(Int(label.text!)!+1)
-//            }
-//            label.runAction(SKAction.repeatActionForever(
-//                SKAction.runBlock{
-//                    if !self.gameOver{
-//                        self.addPipe()
-//                        SKAction.sequence([
-//                        actionLabelNumberAdd,
-//                        SKAction.waitForDuration(NSTimeInterval(2))
-//                    ])
-//                    }
-//                }
-//                
-//                ))
         }
     }
     func loadFloor()->SKSpriteNode{
@@ -230,7 +234,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         node.anchorPoint = CGPoint(x: 0, y: 0)
         let center = CGPoint(x: node.size.width/2, y: node.size.height/2)
         node.physicsBody = SKPhysicsBody(rectangleOfSize: node.size,center: center) // 1
-        node.physicsBody?.dynamic = true // 2
         node.physicsBody?.categoryBitMask = PhysicsCategory.Floor // 3
         node.physicsBody?.contactTestBitMask = PhysicsCategory.Bird // 4
         node.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
@@ -261,18 +264,43 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     func loadGameOverNode(){
         guard let _ = childNodeWithName(SceneChildName.GameOverNode.rawValue) as! SKSpriteNode? else {
-            let texture = SKTexture(image: UIImage(named: "MedalPlate")!)
-            let node = SKSpriteNode(texture: texture)
-            node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            node.position = CGPointMake(size.width/2, size.height/2)
-            node.zPosition = SceneZposition.GameOver.rawValue
-            node.name = SceneChildName.GameOver.rawValue
+            
+            let plate = SKSpriteNode(texture: SKTexture(imageNamed: "MedalPlate"))
+            plate.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            plate.position = CGPointMake(size.width/2, size.height/2)
+            plate.zPosition = SceneZposition.GameOver.rawValue
+            plate.name = SceneChildName.GameOver.rawValue
+            
+            let medal = SKSpriteNode(texture: SKTexture(imageNamed: "MedalGold"))
+            medal.position = CGPointMake(-plate.size.width*0.2831, -plate.size.height*0.056)
+            medal.zPosition = plate.zPosition + 1
+            plate.addChild(medal)
+            
+            let scoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+            scoreLabel.text = "0"
+            scoreLabel.fontSize = 36/232 * plate.size.height
+            scoreLabel.fontColor = UIColor(white: 0.3, alpha: 1)
+            scoreLabel.horizontalAlignmentMode = .Right
+            scoreLabel.position = CGPointMake(plate.size.width*180/452, plate.size.height*16/232)
+            scoreLabel.zPosition = plate.zPosition + 1
+            scoreLabel.name = SceneChildName.ScoreLabel.rawValue
+            plate.addChild(scoreLabel)
+            
+            let bestScoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+            bestScoreLabel.text = "0"
+            bestScoreLabel.fontSize = 36/232 * plate.size.height
+            bestScoreLabel.fontColor = UIColor(white: 0.3, alpha: 1)
+            bestScoreLabel.horizontalAlignmentMode = .Right
+            bestScoreLabel.position = CGPointMake(plate.size.width*180/452, -plate.size.height*70/232)
+            bestScoreLabel.zPosition = plate.zPosition + 1
+            bestScoreLabel.name = SceneChildName.BestScoreLabel.rawValue
+            plate.addChild(bestScoreLabel)
             
             let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.9), size: size)
             backgroundNode.anchorPoint = CGPoint(x: 0, y: 0)
             backgroundNode.name = SceneChildName.GameOverNode.rawValue
             backgroundNode.zPosition = SceneZposition.TranslucentBackground.rawValue
-            backgroundNode.addChild(node)
+            backgroundNode.addChild(plate)
             addChild(backgroundNode)
             return
         }
@@ -288,7 +316,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         loadPipe()
         let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
         node!.hidden = true
-//        gameOver = false
     }
     
     func getGap()->CGFloat{
@@ -302,10 +329,37 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         return random() * (max - min) + min
     }
     func removeAction(){
-        let node = childNodeWithName(SceneChildName.Bird.rawValue)
-        node?.physicsBody?.dynamic = false
         for child in children {
             child.removeAllActions()
         }
+    }
+    //MARK: UserDefaults
+    func getBestScore() ->Int{
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        return userDefaults.integerForKey("BestScore")
+        
+    }
+    func setBestScore(score:Int){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(score, forKey: "BestScore")
+    }
+    func refreshBestScoreAndPresentMedalPlate(){
+        let labelNode = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
+        let score = Int(labelNode.text!)
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let bestScore = userDefaults.integerForKey("BestScore")
+        if score > bestScore {
+            userDefaults.setValue(score, forKey: "BestScore")
+        }
+    
+        let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
+        let plate = node!.childNodeWithName(SceneChildName.GameOver.rawValue)
+        let scoreLabel = plate?.childNodeWithName(SceneChildName.ScoreLabel.rawValue) as! SKLabelNode
+        scoreLabel.text = labelNode.text
+        let bestScoreLabel = plate?.childNodeWithName(SceneChildName.BestScoreLabel.rawValue) as! SKLabelNode
+        bestScoreLabel.text = String(bestScore)
+        
+        node!.hidden = false
+        
     }
 }
