@@ -23,6 +23,9 @@ enum SceneChildName : String {
     case ScoreLabel = "scoreLabel"
     case BestScoreLabel = "bestScoreLabel"
     case Medal = "medal"
+    case Sensor = "sensor"
+    case GameOverLabel = "gameOverLabel"
+    case GameReadyLabel = "gameReadyLabel"
 
 }
 enum SceneZposition: CGFloat {
@@ -34,7 +37,6 @@ enum SceneZposition: CGFloat {
     case Floor
     case Bird = 40
     case TranslucentBackground
-    
     case GameOver
     case GameReady
 }

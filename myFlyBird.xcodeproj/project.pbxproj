@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		569226601C586F25004ED3B3 /* myFlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		569226601C586F25004ED3B3 /* Flappy Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flappy Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		569226631C586F25004ED3B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569226671C586F25004ED3B3 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		569226691C586F25004ED3B3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		569226611C586F25004ED3B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				569226601C586F25004ED3B3 /* myFlyBird.app */,
+				569226601C586F25004ED3B3 /* Flappy Bird.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			);
 			name = myFlyBird;
 			productName = myFlyBird;
-			productReference = 569226601C586F25004ED3B3 /* myFlyBird.app */;
+			productReference = 569226601C586F25004ED3B3 /* Flappy Bird.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +261,7 @@
 				INFOPLIST_FILE = myFlyBird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lsw.self.myFlyBird;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Flappy Bird";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -273,7 +273,7 @@
 				INFOPLIST_FILE = myFlyBird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lsw.self.myFlyBird;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Flappy Bird";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

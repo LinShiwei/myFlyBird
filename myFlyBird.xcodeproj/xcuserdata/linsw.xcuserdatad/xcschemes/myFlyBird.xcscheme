@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5692265F1C586F25004ED3B3"
-               BuildableName = "myFlyBird.app"
+               BuildableName = "Flappy Bird.app"
                BlueprintName = "myFlyBird"
                ReferencedContainer = "container:myFlyBird.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5692265F1C586F25004ED3B3"
-            BuildableName = "myFlyBird.app"
+            BuildableName = "Flappy Bird.app"
             BlueprintName = "myFlyBird"
             ReferencedContainer = "container:myFlyBird.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5692265F1C586F25004ED3B3"
-            BuildableName = "myFlyBird.app"
+            BuildableName = "Flappy Bird.app"
             BlueprintName = "myFlyBird"
             ReferencedContainer = "container:myFlyBird.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5692265F1C586F25004ED3B3"
-            BuildableName = "myFlyBird.app"
+            BuildableName = "Flappy Bird.app"
             BlueprintName = "myFlyBird"
             ReferencedContainer = "container:myFlyBird.xcodeproj">
          </BuildableReference>

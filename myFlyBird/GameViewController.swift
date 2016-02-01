@@ -10,9 +10,9 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    var isPause = false
 
     @IBOutlet weak var pauseButton: UIButton!
-    var isPause = false
     @IBAction func pause(sender: UIButton) {
         let skView = view as! SKView
         if isPause {
@@ -32,11 +32,10 @@ class GameViewController: UIViewController {
         let scene = GameScene(size: view.bounds.size)
         scene.scaleMode = SKSceneScaleMode.AspectFill
         let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .ResizeFill
-//        skView.allowsTransparency = true
         skView.presentScene(scene)
     }
 
