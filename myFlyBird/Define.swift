@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import SpriteKit
 
 enum SceneChildName : String {
     case Bird = "bird"

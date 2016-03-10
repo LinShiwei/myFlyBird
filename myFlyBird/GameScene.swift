@@ -17,10 +17,13 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
-    
-    let gapLocationY :CGFloat = 150
+
     var gameOver = false
+    let gapLocationY :CGFloat = 150
     let scrollVelocity:CGFloat = 120//120px per second
+    var birdOriginPosition :CGPoint{
+        return CGPoint(x: size.width*0.4,y: size.height*0.5)
+    }
     
     //MARK: View
     override func didMoveToView(view: SKView) {
@@ -87,14 +90,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                     }
                 }
             }
-            
         }
-       
     }
     func birdDidCollideWithPipe(bird:SKSpriteNode,pipe:SKSpriteNode) {
         gameOver = true
         refreshBestScoreAndPresentMedalPlate()
-        removeAction()
+        removeAllChildrenAction()
     }
     func birdDidPassGap(bird:SKSpriteNode,sensor:SKSpriteNode){
         sensor.removeFromParent()
@@ -116,7 +117,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             let bird = SKSpriteNode(texture: birdTexture1)
             let flap = SKAction.animateWithTextures(texture, timePerFrame: 0.2, resize: true, restore: true)
             bird.runAction(SKAction.repeatActionForever(flap), withKey: "flapForever")
-            bird.position = CGPoint(x: size.width*0.4,y: size.height/2)
+            bird.position = birdOriginPosition
             bird.zPosition = SceneZposition.Bird.rawValue
             bird.name = SceneChildName.Bird.rawValue
             bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width/2) // 1
@@ -318,9 +319,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         
     }
-    func loadPauseButton(){
-        
-    }
     //MARK: 自定义函数
     func start(){
         removeAllChildren()
@@ -336,12 +334,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let score = Int(label.text!)
         let factor :CGFloat
         if score < 10 {
-            factor = 6.5
+            factor = 6
         }else{
             if score < 100 {
-                factor = 6
-            }else{
                 factor = 5.8
+            }else{
+                factor = 5.6
             }
         }
         let bird = childNodeWithName(SceneChildName.Bird.rawValue) as! SKSpriteNode
@@ -353,7 +351,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func random(min min: CGFloat, max: CGFloat) -> CGFloat {
         return random() * (max - min) + min
     }
-    func removeAction(){
+    func removeAllChildrenAction(){
         for child in children {
             child.removeAllActions()
         }
@@ -369,8 +367,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         userDefaults.setValue(score, forKey: "BestScore")
     }
     func refreshBestScoreAndPresentMedalPlate(){
-        let labelNode = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
-        let score = Int(labelNode.text!)
+        let scoreLabelNode = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
+        let score = Int(scoreLabelNode.text!)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         var bestScore = userDefaults.integerForKey("BestScore")
         if score > bestScore {
@@ -381,10 +379,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let node = childNodeWithName(SceneChildName.GameOverNode.rawValue)
         let plate = node!.childNodeWithName(SceneChildName.GameOver.rawValue)
         let scoreLabel = plate?.childNodeWithName(SceneChildName.ScoreLabel.rawValue) as! SKLabelNode
-        scoreLabel.text = labelNode.text
+        scoreLabel.text = scoreLabelNode.text
         let bestScoreLabel = plate?.childNodeWithName(SceneChildName.BestScoreLabel.rawValue) as! SKLabelNode
         bestScoreLabel.text = String(bestScore)
         let medal = plate?.childNodeWithName(SceneChildName.Medal.rawValue) as! SKSpriteNode
+        
         if bestScore < 50 {
             medal.texture = SKTexture(imageNamed: "MedalBronze")
         }else{
@@ -399,6 +398,5 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             }
         }
         node!.hidden = false
-        
     }
 }
