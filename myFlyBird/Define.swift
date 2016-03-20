@@ -15,7 +15,7 @@ enum SceneChildName : String {
     case TopPipe = "topPipe"
     case BottomPipe = "bottomPipe"
     case Background = "background"
-    case Floor = "floor"
+    case Floor = "foor"
     case PipeLabel = "pipeLabel"
     case GameReady = "ready"
     case GameReadyNode = "readyNode"

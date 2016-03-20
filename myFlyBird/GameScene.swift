@@ -13,7 +13,7 @@ struct PhysicsCategory {
     static let Bird      : UInt32 = 0b1       // 1
     static let Pipe      : UInt32 = 0b10      // 2
     static let Floor     : UInt32 = 0b11
-    static let Sensor    : UInt32 = 0b100
+    static let Sensor    : UInt32 = 0b1000
 }
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
@@ -27,6 +27,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     //MARK: View
     override func didMoveToView(view: SKView) {
+        
         backgroundColor = SKColor.blackColor()
         physicsWorld.contactDelegate = self
         start()
@@ -123,8 +124,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width/2) // 1
             bird.physicsBody?.dynamic = false // 2
             bird.physicsBody?.categoryBitMask = PhysicsCategory.Bird // 3
-            bird.physicsBody?.contactTestBitMask = PhysicsCategory.Pipe & PhysicsCategory.Floor & PhysicsCategory.Sensor  // 4
-            bird.physicsBody?.collisionBitMask = PhysicsCategory.Pipe & PhysicsCategory.Floor // 5
+            bird.physicsBody?.contactTestBitMask = PhysicsCategory.Pipe | PhysicsCategory.Floor | PhysicsCategory.Sensor  // 4
+            bird.physicsBody?.collisionBitMask = PhysicsCategory.Pipe | PhysicsCategory.Floor // 5
             bird.physicsBody?.usesPreciseCollisionDetection = true
             bird.physicsBody?.mass = 0.1
             bird.physicsBody?.affectedByGravity = true
@@ -236,8 +237,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         node.physicsBody = SKPhysicsBody(rectangleOfSize: node.size,center: center) // 1
         node.physicsBody?.categoryBitMask = PhysicsCategory.Floor // 3
         node.physicsBody?.contactTestBitMask = PhysicsCategory.Bird // 4
-        node.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+        node.physicsBody?.collisionBitMask = PhysicsCategory.Bird // 5
         node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.dynamic = false
         return node
     
     }
