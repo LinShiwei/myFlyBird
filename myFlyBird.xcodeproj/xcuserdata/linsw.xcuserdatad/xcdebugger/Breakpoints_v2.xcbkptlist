@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myFlyBird/GameScene.swift"
-            timestampString = "480145543.436683"
+            timestampString = "480327297.815419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408">
+            startingLineNumber = "410"
+            endingLineNumber = "410">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

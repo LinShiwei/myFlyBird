@@ -43,9 +43,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
-            if node.name == SceneChildName.GameReady.rawValue{
+            if node.name == SceneChildName.GameReady.rawValue || node.name == SceneChildName.GameReadyNode.rawValue{
                 gameOver = false
-                node.parent?.hidden = true
+                if let gameReadyNode = childNodeWithName(SceneChildName.GameReadyNode.rawValue){
+                    gameReadyNode.hidden = true
+                }
                 let bird = childNodeWithName(SceneChildName.Bird.rawValue)
                 bird?.physicsBody?.dynamic = true
                 let pipe = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
@@ -280,7 +282,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
             let medal = SKSpriteNode(texture: SKTexture(imageNamed: "MedalGold"))
             medal.position = CGPointMake(-plate.size.width*0.2831, -plate.size.height*0.056)
-            medal.zPosition = plate.zPosition + 1
+            medal.zPosition = plate.zPosition
             medal.name = SceneChildName.Medal.rawValue
             plate.addChild(medal)
             
@@ -290,7 +292,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             scoreLabel.fontColor = UIColor(white: 0.3, alpha: 1)
             scoreLabel.horizontalAlignmentMode = .Right
             scoreLabel.position = CGPointMake(plate.size.width*180/452, plate.size.height*16/232)
-            scoreLabel.zPosition = plate.zPosition + 1
+            scoreLabel.zPosition = plate.zPosition
             scoreLabel.name = SceneChildName.ScoreLabel.rawValue
             plate.addChild(scoreLabel)
             
@@ -300,13 +302,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             bestScoreLabel.fontColor = UIColor(white: 0.3, alpha: 1)
             bestScoreLabel.horizontalAlignmentMode = .Right
             bestScoreLabel.position = CGPointMake(plate.size.width*180/452, -plate.size.height*70/232)
-            bestScoreLabel.zPosition = plate.zPosition + 1
+            bestScoreLabel.zPosition = plate.zPosition
             bestScoreLabel.name = SceneChildName.BestScoreLabel.rawValue
             plate.addChild(bestScoreLabel)
             
             let gameOverLabel = SKSpriteNode(texture: SKTexture(imageNamed: "GameOver"))
             gameOverLabel.position = CGPointMake(size.width/2, size.height/2+plate.size.height*0.75)
-            gameOverLabel.zPosition = plate.zPosition + 1
+            gameOverLabel.zPosition = plate.zPosition
             gameOverLabel.name = SceneChildName.GameOverLabel.rawValue
             
             let backgroundNode = SKSpriteNode(color: UIColor(white: 0.2, alpha: 0.3), size: size)
@@ -359,15 +361,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
     }
     //MARK: UserDefaults
-    func getBestScore() ->Int{
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        return userDefaults.integerForKey("BestScore")
-        
-    }
-    func setBestScore(score:Int){
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setValue(score, forKey: "BestScore")
-    }
     func refreshBestScoreAndPresentMedalPlate(){
         let scoreLabelNode = childNodeWithName(SceneChildName.PipeLabel.rawValue) as! SKLabelNode
         let score = Int(scoreLabelNode.text!)
