@@ -13,16 +13,16 @@ class GameViewController: UIViewController {
     var isPause = false
 
     @IBOutlet weak var pauseButton: UIButton!
-    @IBAction func pause(sender: UIButton) {
+    @IBAction func pause(_ sender: UIButton) {
         let skView = view as! SKView
         if isPause {
             self.isPause = false
-            skView.paused = false
-            self.pauseButton.setImage(UIImage(named: "Pause"), forState: UIControlState.Normal)
+            skView.isPaused = false
+            self.pauseButton.setImage(UIImage(named: "Pause"), for: UIControlState())
         }else{
             self.isPause = true
-            skView.paused = true
-            self.pauseButton.setImage(UIImage(named: "Play"), forState: UIControlState.Normal)
+            skView.isPaused = true
+            self.pauseButton.setImage(UIImage(named: "Play"), for: UIControlState())
 
         }
     }
@@ -30,19 +30,19 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         let scene = GameScene(size: view.bounds.size)
-        scene.scaleMode = SKSceneScaleMode.AspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFill
         let skView = view as! SKView
         skView.showsFPS = false
         skView.showsNodeCount = false
         skView.ignoresSiblingOrder = true
-        scene.scaleMode = .ResizeFill
+        scene.scaleMode = .resizeFill
         skView.presentScene(scene)
     }
 
 
 
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

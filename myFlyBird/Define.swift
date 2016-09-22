@@ -30,14 +30,14 @@ enum SceneChildName : String {
 
 }
 enum SceneZposition: CGFloat {
-    case Background = 0
+    case background = 0
     
-    case PipeLabel
-    case TopPipe = 30
-    case BottomPipe = 35
-    case Floor
-    case Bird = 40
-    case TranslucentBackground
-    case GameOver
-    case GameReady
+    case pipeLabel
+    case topPipe = 30
+    case bottomPipe = 35
+    case floor
+    case bird = 40
+    case translucentBackground
+    case gameOver
+    case gameReady
 }
